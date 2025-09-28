@@ -1,4 +1,6 @@
 # Employee Management System
+<img width="1438" height="861" alt="Screenshot 2025-09-28 at 5 43 21 PM" src="https://github.com/user-attachments/assets/ce9713c8-8a82-4d55-b491-afd2362d32e7" />
+
 
 A comprehensive Flask web application with MCP (Model Context Protocol) server integration for managing employee records. This project demonstrates a full CRUD (Create, Read, Update, Delete) system with a modern web interface and safe database operations through MCP.
 
