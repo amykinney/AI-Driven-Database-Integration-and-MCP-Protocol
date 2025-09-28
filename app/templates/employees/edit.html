@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Employee - Employee Management System{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="mb-0">
+                    <i class="fas fa-user-edit"></i> Edit Employee
+                </h4>
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="name" name="name" 
+                               value="{{ employee.name }}" required>
+                        <div class="form-text">Enter the employee's full name.</div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="department_id" class="form-label">Department</label>
+                        <select class="form-select" id="department_id" name="department_id">
+                            <option value="">Select a department (optional)</option>
+                            {% for department in departments %}
+                            <option value="{{ department.id }}" 
+                                    {% if employee.department_id == department.id %}selected{% endif %}>
+                                {{ department.name }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                        <div class="form-text">Choose the employee's department.</div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="salary" class="form-label">Salary</label>
+                        <div class="input-group">
+                            <span class="input-group-text">$</span>
+                            <input type="number" class="form-control" id="salary" name="salary" 
+                                   step="0.01" min="0" value="{{ employee.salary or '' }}" 
+                                   placeholder="0.00">
+                        </div>
+                        <div class="form-text">Enter the employee's annual salary (optional).</div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="hire_date" class="form-label">Hire Date</label>
+                        <input type="date" class="form-control" id="hire_date" name="hire_date" 
+                               value="{{ employee.hire_date or '' }}">
+                        <div class="form-text">Select the employee's hire date (optional).</div>
+                    </div>
+                    
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a href="{{ url_for('main.list_employees') }}" class="btn btn-secondary me-md-2">
+                            <i class="fas fa-times"></i> Cancel
+                        </a>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i> Update Employee
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
